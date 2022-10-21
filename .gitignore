@@ -1,0 +1,7 @@
+node_modules/
+.expo/
+.env
+mysqlConfig.js
+
+# macOS
+.DS_Store
