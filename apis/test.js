@@ -61,3 +61,76 @@ async function callTest(that) {
 }
 
 callTest(this);
+
+/* ----------------------------------- EXAMPLE ------------------------------------ */
+/*
+export const Ennova = {
+  SQL_SELECT: "select",
+  SQL_INSERT: "insert into",
+  SQL_UPDATE: "update",
+  StringUtils: {
+    compare: (source, target) => {
+      if (source)
+        return source.localeCompare(target);
+      return NaN;
+    }
+  },
+
+  SqlUtils: {
+    makeExcuteQueryArgument: (body) => {
+      let result = {};
+      result.params = Ennova.SqlUtils.makeParams(body);
+
+      result.query = Ennova.SqlUtils.makeQueryString(body).join(" ").trim();
+      result.query = Ennova.SqlUtils.makeSQLQuery(body, result.query);
+
+      return result;
+  },
+
+  getConditions: (params, idx) => {
+      return params.whData.conditions[idx] !== undefined ? params.whData.conditions[idx] : "";
+    },
+
+  makeQueryString: (params) => {
+    return params.whData.fields.map((element, idx) => {
+      let conditions = " ";
+      if (idx !== params.whData.fields.length - 1) conditions += params.whData.conditions[idx];
+      return element + " = ? " + getConditions(params, idx);
+    })
+  },
+
+  makeParams: (params) => {
+    return params.whData.fields.map((element, idx) => params.fields[element]);
+  },
+
+  makeSQLQuery: (body, query) => {
+    if (body.method === Ennova.SQL_SELECT) {
+      return query = `select * from ${body.table} ` + query;
+    } else if (body.method === Ennova.SQL_INSERT) {
+
+    } else if (body.method === Ennova.SQL_UPDATE) {
+
+    }
+    }
+  }
+};
+
+//Example : 해당 메소드를 call하는 파일
+import { Ennova } from "./utils.js";
+
+const { SQL_SELECT } = Ennova;
+const body = {
+  method: SQL_SELECT ,
+  table: 'tb_users',
+  whData: {
+    fields: ["id", "password"],
+    conditions: ["and"]
+  }, 
+  fields: {
+    id: "xfilecom@gmail.com",
+    password: "hi",
+  }, 
+}
+
+console.log(Ennova.SqlUtils.makeExcuteQueryArgument(body));
+*/
